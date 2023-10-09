@@ -18,6 +18,12 @@ nunjucks.configure('views', {
   express: app,
 });
 
+app.get('/', (req, res) => {
+  res.render('homepage.html.njk')
+})
+
+const fossilsArray =["aust", "quetz", "steg", "trex"]
+
 const MOST_LIKED_FOSSILS = {
   aust: {
     img: '/img/australopith.png',
@@ -27,7 +33,7 @@ const MOST_LIKED_FOSSILS = {
   quetz: {
     img: '/img/quetzal_torso.png',
     name: 'Quetzal',
-    num_likes: 587,
+    num_likes: 587, 
   },
   steg: {
     img: '/img/stego_skull.png',
@@ -40,6 +46,10 @@ const MOST_LIKED_FOSSILS = {
     num_likes: 601,
   },
 };
+
+app.get('/top-fossils', (req, res) => {
+  res.render('top-fossils.html.njk', {fossils: MOST_LIKED_FOSSILS})
+})
 
 const OTHER_FOSSILS = [
   {
