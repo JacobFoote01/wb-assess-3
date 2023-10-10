@@ -1,39 +1,36 @@
+{% extends 'base.html.njk' %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>
-   {% block title %}
-    Most Liked Fossils
-    {% endblock %}
+      {% block title %}
+        Most Liked Fossils
+      {% endblock %}
     </title>
   </head>
-  
-  <body>
   {% block content %}
-    {% if array %}
-
-      {% for fossil name %}    
-        <div class="fossil-div"></div>
-          <h3>{{ fossils.name }}</h3>
-      {% endfor %}    
-         
-      {% for fossil likes %}   
-        <div class="fossil-div"></div>
-          <h2>Liked {{ fossils.num_likes }} times.</h2>
-      {% endfor %}   
-         
-         
-      {% for fossil image %}
-        <div class="fossil-div"></div>
-          <img src="{{ fossils.img }}" />
-      {% endfor %}
-         
-   {% endif %}
-                 
+    {% if name %}
+      <h1>Welcome {{ name }}</h1>
+    {% endif %}
+    {% for fossil in fossils %}
+      <div>
+        <h3>{{ name }}, this is a {{ fossil.name }}</h3>
+        <p>Liked {{ fossil.num_likes }} times</p>
+        <img src="{{ fossil.img }}"/>
+      </div>
+    {% endfor %}
+    <form method='post' action='/like-fossil'>
+      <label for="key">Select an option:</label>
+      <select id="key" name="key">
+        <option value="aust">Australopithecus</option>
+        <option value="quetz">Quetzal</option>
+        <option value="steg">Stegosaurus</option>
+        <option value="trex">Tyrannosaurus Rex</option>
+      </select>
+      <button type="submit">Submit</button>
+    </form>
   {% endblock %}
-  </body>
 </html>
