@@ -130,7 +130,6 @@ app.post('/like-fossil', (req, res) => {
   res.redirect('/thank-you')
 })
 
-// create thank you route
 app.get('/thank-you', (req, res) => {
   res.render('thank-you.html.njk', {
     name: req.session.name,

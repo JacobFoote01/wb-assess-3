@@ -1,24 +1,24 @@
 {% extends 'base.html.njk' %}
 {% block title %}
-  {{ title }}
+    {{ title }}
 {% endblock %}
 {% block content %}
-  {% if name %}
-    <p>{{ name }}</p>
-  {% endif %}
-  <h1>Most Liked Fossils</h1>
-  <form method='post' action="/get-name">
-    <div>
-      <label for="namefield">What's your name?</label>
-      <input id="namefield" type="text" name="name" required/>
-    </div>
-    <div>
-      <input type="submit"/>
-    </div>
-  </form>
-  <h1>Random Fossil</h1>
-  <button id="get-random-fossil">Get Random Fossil</button>
-  <div id="random-fossil-image"></div>
-  <p id="random-fossil-name"></p>
-  {# <script type="module" src="../src/random-fossil.js"></script> #}
+    {% if name %}
+        <p>{{ name }}</p>
+    {% endif %}
+    <h1>Most Liked Fossils</h1>
+    <form method='post' action="/get-name">
+        <div>
+            <label for="namefield">What's your name?</label>
+            <input id="namefield" type="text" name="name" required/>
+        </div>
+        <div>
+            <input type="submit"/>
+        </div>
+    </form>
+    <h1>Random Fossil</h1>
+    <button id="get-random-fossil">Get Random Fossil</button>
+    <img id="random-fossil-image"/>
+    <p id="random-fossil-name"></p>
+    <script type="module" src="../src/random-fossil.js"></script>
 {% endblock %}
